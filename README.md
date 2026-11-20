@@ -28,8 +28,7 @@ The solution enables marketing and customer success teams to identify high-value
 ---
 
 ## Dashboard Architecture
-
-
+![Executive Retention Dashboard](assets/dashboard_overview.png)
 1. **Segment Breakdown:** Horizontal bar chart displaying customer distribution across `Active Regular`, `At-Risk / Dormant`, and `Top 10% VIP` tiers. Clicking any segment dynamically filters the entire dashboard.
 2. **RFM Behavioral Scatter Plot:** Maps `Recency Days` against `Monetary Value` to visually isolate high-value outliers slipping past the 90-day churn boundary.
 3. **Actionable CRM Target List:** A sortable, multi-metric table displaying `Customer Id`, `Last Purchase Date`, `Monetary Value`, `Recency Days`, and `Frequency Count`—sorted descending by spend so CRM teams prioritize top-value accounts first.
@@ -38,10 +37,20 @@ The solution enables marketing and customer success teams to identify high-value
 
 ## Repository Structure
 ```text
+├── assets/
+│   ├── as_is_workflow.png          # Swimlane process diagram
+│   ├── dashboard_at_risk_view.png  # Filtered At-Risk / Dormant segment view
+│   └── dashboard_overview.png      # Unfiltered Tableau Executive Dashboard
+├── dashboard/
+│   └── customer_retention_dashboard.twb # Packaged Tableau workbook
 ├── data/
-│   └── customer_segments.csv      # Aggregated RFM & segment dataset (4,371 rows)[cite: 1]
+│   ├──customer_segments.csv         # Aggregated RFM & segment dataset (4,371 rows)
+│   └── data_dictionary.md           # Schema & metric definitions
+├── requirements_docs/
+│   ├── BRD.pdf                      # BRD & Stakeholder Analysis 
+│   ├── Data_Profiling_Audit.pdf     # Data cleaning & quality validation notes
+│   └── RTM.pdf                      # RTM linking business rules to SQL & visuals     
 ├── sql/
-│   └── rfm_segmentation.sql       # Data cleaning & NTILE segmentation queries
-├── tableau/
-│   └── retention_dashboard.twbx   # Packaged Tableau workbook
-└── README.md
+│   └── rfm_segmentation.sql        # SQL cleaning, NTILE deciles & 90-day churn logic
+├── LICENSE                         # MIT License
+└── README.md                       # Master case study & links to all
